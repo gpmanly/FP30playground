@@ -1134,6 +1134,18 @@ function saveUserPreset(){
 	}
 }
 
+function resetMidiAndPresets(){
+	reset();
+	setvolumen(127);
+	try {
+		localStorage.removeItem(userPresetsKey);
+		selectedPresetSlot = 0;
+		refreshUserPresets();
+	} catch (error) {
+		window.alert("Could not clear saved presets from browser storage.");
+	}
+}
+
 function applyUserPreset(preset){
 	part = parseInt(preset.part, 10) || 0;
 	$("#part1").prop("checked", part === 0);
@@ -1166,7 +1178,7 @@ function applyUserPreset(preset){
 }
 
 function selectmidilocal(cb){
-	midilocal=cb.checked;
+	midilocal = typeof cb === "boolean" ? cb : cb.checked;
 	// Send midi looplocal command
 	var data=[];
 	if (midilocal)
@@ -1252,7 +1264,8 @@ function selectedInterface(){
   //alert(midiinput.name);
   // Reset
   part=0;
-  selectmidilocal($("#cbox1")[0]); // set midilocal state
+	// Keep the FP30's internal piano muted; the selected voice is played via MIDI loopback.
+	selectmidilocal(false);
   setvolumen(127);
   setexpression(127);
   setreverb(0x0e);
@@ -1485,6 +1498,7 @@ function setup(){
 			ontouchend="canvastend(this);" ontouchstart="canvaststart(this);" ontouchmove="canvastmove(this);"></canvas>
 		</div>
 	</fieldset>
+	<button type="button" style="width:auto;height:auto;margin:12px;" onclick="resetMidiAndPresets();">RESET MIDI + PRESETS</button>
 	</div>
 	<div>
 	<fieldset class="form-section level-effects-section">
@@ -1554,8 +1568,6 @@ function setup(){
 	<label>Bank LSB:</label><input type="text" id="lsb" value="68">
 	<button style="width:auto;height:auto;" onclick="setpcbank();">SET</button>
 	</div>-->
-	<button style="width:auto;height:auto;margin:12px;" onclick="reset();setvolumen(127);">RESET MIDI</button>
-	
 	</main>
 	<script>
 	$("#selectInterface")[0].addEventListener("change",function(event,data){selectedInterface();});
