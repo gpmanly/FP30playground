@@ -633,25 +633,6 @@
 		min-width:0;
 		margin:0;
 	}
-	.cc-control-row{
-		display:grid;
-		grid-template-columns:minmax(76px, 100px) 44px minmax(0, 1fr) 34px;
-		align-items:center;
-		gap:6px;
-	}
-	.cc-control-row .slider{
-		width:100%;
-		min-width:0;
-		margin:0;
-	}
-	.cc-control-row label,
-	.cc-control-row input{
-		margin:0;
-	}
-	.cc-control-row input[type="text"]{
-		width:44px;
-		min-width:0;
-	}
 	@media (max-width:480px){
 		.level-control-row{
 			grid-template-columns:minmax(68px, 82px) minmax(0, 1fr) 30px;
@@ -721,6 +702,10 @@
 	.preset-save-row button{
 		width:100%;
 		height:34px;
+	}
+	.reset-midi-button{
+		width:100%;
+		margin:0;
 	}
 	div{
 		margin:0;
@@ -1246,7 +1231,7 @@ function setpcbank(){
 function setslidecc(value=0){
 	updateSliderFill(document.getElementById("slidecc"));
 	$("#cclabel").text(value);
-	var cc = $("#cc").val();
+	var cc = 1;
 	//alert("CC "+cc+" val:"+value)
 	if (midioutput)
 		midioutput.send([0xb0+part,cc,value]);
@@ -1761,7 +1746,7 @@ function setup(){
 			ontouchend="canvastend(this);" ontouchstart="canvaststart(this);" ontouchmove="canvastmove(this);"></canvas>
 		</div>
 	</fieldset>
-	<button type="button" style="width:auto;height:auto;margin:12px;" onclick="resetMidiAndPresets();">RESET MIDI + PRESETS</button>
+	<button class="reset-midi-button" type="button" onclick="resetMidiAndPresets();">RESET MIDI + PRESETS</button>
 	</div>
 	<div>
 	<fieldset class="form-section level-effects-section">
@@ -1817,11 +1802,7 @@ function setup(){
 		<button class="reset-control" onclick="setdecay(64);">R</button>
 		<label class="labslide control-value" id="dec">64</label>
 	</div>
-	<div class="cc-control-row">
-		<label class="labslide" for="cc">Sustain CC</label><input type="text" id="cc" value="1">
-		<input type="range" min="0" max="127" value="0" class="slider" id="slidecc" oninput="setslidecc(this.value);">
-		<label class="labslide control-value" id="cclabel">0</label>
-	</div>
+	<div class="level-control-row"><label class="labslide" for="slidecc">Sustain CC</label><input type="range" min="0" max="127" value="0" class="slider" id="slidecc" oninput="setslidecc(this.value);"><label class="labslide control-value" id="cclabel">0</label></div>
 	</fieldset>
 	</div>
 	</div>
