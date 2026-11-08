@@ -4,6 +4,10 @@ This is an experimental app for roland fp30 digital piano.
 
 Test the app here: [https://jjulio.github.io/FP30playground](https://jjulio.github.io/FP30playground)
 
+## Offline, single-file use
+
+The complete app, including its sound catalog, is embedded in `index.html`; it does not need a network connection or supporting files. Copy that one file to a device and open it with Chrome. On Android, use a file manager's **Open with Chrome** option. Connect the piano using USB OTG, open the file, tap **CONNECT MIDI**, and grant MIDI/SysEx access if prompted. Chrome Android supports Web MIDI, but USB-MIDI availability and permission behavior can vary by Android device and connected keyboard.
+
 FP30 is a fantastic piano!. With this app you could play a lot of new sounds and settings (effect types,reverbs,chorus,pitch bend, modulation,sound envelope settings...)
 This app uses a Midi loopback to receive the midi notes of the FP30 and send back again with the posibility to select a lot of new sounds and settings!
 By default it switches off the internal sound generator (main keyboard midi local off) but you could play with this enabled also if you want a layered sound.
