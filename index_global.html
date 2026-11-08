@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <title>FP30 playground webmidi</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
 	<meta name="mobile-web-app-capable" content="yes">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>	
@@ -143,7 +142,7 @@
   margin:5px;
   }
 </style>
-<script type="text/javascript">
+<script>
 var midi = null;  // global MIDIAccess object
 var midiinput = null;
 var midioutput = null;
@@ -662,7 +661,9 @@ function setup(){
 
 </script>
 </head>
-<body onload="setup();">
+<body>
+	<script>window.addEventListener("DOMContentLoaded", setup);</script>
+	<main>
 	<div><h2>FP30 Playground Global params v0.2</h2></div>
 	<div>
 		<select id="selectInterface">
@@ -733,6 +734,7 @@ function setup(){
 	</fieldset>
 	<fieldset style="padding-top:40px">
 	</fieldset>
+	</main>
 	<script>
 	$("#selectInterface")[0].addEventListener("change",function(event,data){selectedInterface();});
 	$("#selectReverb")[0].addEventListener("change",function(event,data){setreverbtype();});

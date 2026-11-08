@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <title>FP30 playground webmidi</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
 	<meta name="mobile-web-app-capable" content="yes">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>	
@@ -13,7 +12,7 @@
 	font-family:verdana,sans-serif;
 	font-size:12pt;
 	background-color:#333;
-	margin:5px,5px,5px,5px;
+	margin:5px;
 	-webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -104,6 +103,7 @@
 	}
 
 .slider {
+	appearance: none;
   -webkit-appearance: none;
   width: 60%;
   height: 15px;
@@ -143,7 +143,7 @@
   margin:5px;
   }
 </style>
-<script type="text/javascript">
+<script>
 var midi = null;  // global MIDIAccess object
 var midiinput = null;
 var midioutput = null;
@@ -936,7 +936,9 @@ function setup(){
 
 </script>
 </head>
-<body onload="setup();">
+<body>
+	<script>window.addEventListener("DOMContentLoaded", setup);</script>
+	<main>
 	<div><h2>FP30 Playground v0.24</h2></div>
 	<div>
 		<select id="selectInterface">
@@ -1038,6 +1040,7 @@ function setup(){
 	<button style="width:auto;height:auto;margin:12px;" onclick="reset();setvolumen(127);">RESET MIDI</button>
 	<fieldset style="height:15px;margin:5px;padding:0px;"></fieldset>
 	
+	</main>
 	<script>
 	$("#selectInterface")[0].addEventListener("change",function(event,data){selectedInterface();});
 	$("#selectSound1")[0].addEventListener("change",function(event,data){selectedSound1();});
