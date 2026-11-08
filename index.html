@@ -55,7 +55,7 @@
 	font-size:12pt;
 	background-color:var(--korg-black);
 	color:var(--text);
-	margin:5px;
+	margin:3px;
 	-webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -70,14 +70,14 @@
 	font-family:"Inter", Helvetica, sans-serif;
 	font-weight:900;
 	letter-spacing:-.04em;
-	margin-left:4px;
+	margin:0 0 4px;
 	}
 	
 	fieldset{
 		min-width:0;
 		font-size:11pt;
-		margin:6px 0;
-		padding:2px;
+		margin:4px 0;
+		padding:1px;
 		border:1px solid var(--korg-wood);
 		border-radius:12px;
 		background:var(--surface);
@@ -88,15 +88,15 @@
 		border:1px solid var(--korg-wood);
 		background-color:var(--korg-dark-gray);
 		border-radius:8px;
-		padding:1rem;
-		margin:0 0 .75rem;
+		padding:.55rem;
+		margin:0 0 .4rem;
 		box-shadow:0 2px 6px rgb(0 0 0 / 18%);
 		min-width:0;
 		display:flex;
 		flex-direction:column;
 		align-items:stretch;
 		justify-content:flex-start;
-		gap:.75rem;
+		gap:.4rem;
 		color:var(--korg-silver);
 	}
 
@@ -104,7 +104,7 @@
 		float:none;
 		align-self:stretch;
 		width:auto;
-		margin:0 0 .125rem;
+		margin:0;
 		border:0;
 		padding:0;
 		text-align:left;
@@ -118,21 +118,21 @@
 	.form-group{
 		display:flex;
 		flex-direction:column;
-		gap:.5rem;
+		gap:.3rem;
 		min-width:0;
 	}
 
 	.form-grid-2col{
 		display:grid;
 		grid-template-columns:repeat(2, minmax(0, 1fr));
-		gap:1rem;
+		gap:.5rem;
 	}
 
 	.top-config-grid{
 		display:grid;
 		grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
 		align-items:start;
-		gap:1rem;
+		gap:.5rem;
 	}
 
 	.app-header{
@@ -435,6 +435,22 @@
 	background:linear-gradient(90deg, var(--roland-orange) 0%, var(--roland-orange) var(--slider-progress, 0%), var(--bg-card-dark) var(--slider-progress, 0%), var(--bg-card-dark) 100%);
 }
 
+	.level-effects-section .slider:not(#volumen)::-webkit-slider-runnable-track{
+		background:var(--surface-raised);
+	}
+
+	.level-effects-section .slider:not(#volumen)::-moz-range-track{
+		background:var(--surface-raised);
+	}
+
+	.level-effects-section .slider:not(#volumen)::-webkit-slider-thumb{
+		background:#888;
+	}
+
+	.level-effects-section .slider:not(#volumen)::-moz-range-thumb{
+		background:#888;
+	}
+
 .slider:hover::-webkit-slider-thumb{
 	transform:scale(1.12);
 	box-shadow:0 0 0 5px rgb(255 90 0 / 18%);
@@ -444,6 +460,14 @@
 	transform:scale(1.12);
 	box-shadow:0 0 0 5px rgb(255 90 0 / 18%);
 }
+
+	.level-effects-section .slider:not(#volumen):hover::-webkit-slider-thumb{
+		box-shadow:0 0 0 4px rgb(136 136 136 / 20%);
+	}
+
+	.level-effects-section .slider:not(#volumen):hover::-moz-range-thumb{
+		box-shadow:0 0 0 4px rgb(136 136 136 / 20%);
+	}
 
 .slider:focus-visible{
 	outline:2px solid var(--accent);
@@ -486,6 +510,234 @@
 		border-radius:6px;
 		background:var(--korg-silver);
 		touch-action:none;
+	}
+
+	/* Compact the control layout while retaining touch-friendly controls. */
+	body{
+		margin:3px;
+	}
+	h2{
+		margin:0 0 4px;
+	}
+	fieldset{
+		margin:4px 0;
+		padding:1px;
+	}
+	.form-section{
+		padding:.55rem;
+		margin:0 0 .4rem;
+		gap:.4rem;
+	}
+	.form-section-title{
+		margin:0;
+	}
+	.form-group{
+		gap:.3rem;
+	}
+	.form-grid-2col,
+	.top-config-grid{
+		gap:.5rem;
+	}
+	.app-header{
+		gap:.4rem .6rem;
+		margin:0 4px 6px;
+	}
+	.header-midi-controls,
+	.header-midi-select{
+		gap:4px 8px;
+	}
+	.header-midi-controls .choice,
+	.choice{
+		min-height:30px;
+	}
+	.level-effects-section{
+		gap:.35rem;
+	}
+	.level-effects-section > div{
+		padding:0;
+	}
+	.level-control-row{
+		display:grid;
+		grid-template-columns:minmax(76px, 100px) minmax(0, 1fr) 34px;
+		align-items:center;
+		column-gap:8px;
+		min-height:32px;
+	}
+	.level-control-row > label:first-child{
+		margin:0;
+		white-space:nowrap;
+	}
+	.level-control-row .slider{
+		grid-column:2;
+		width:100%;
+		min-width:0;
+		margin:0;
+	}
+	.level-control-row .control-value{
+		grid-column:3;
+		justify-self:end;
+		min-width:28px;
+		margin:0;
+		text-align:right;
+	}
+	.level-control-row select{
+		grid-column:2 / 4;
+		width:100%;
+		min-width:0;
+	}
+	.effect-select-row{
+		display:grid;
+		grid-template-columns:minmax(74px, 92px) minmax(0, 1fr) minmax(74px, 92px) minmax(0, 1fr);
+		align-items:center;
+		gap:6px;
+	}
+	.effect-select-row > label{
+		margin:0;
+		font-size:9pt;
+		white-space:nowrap;
+	}
+	.effect-select-row select{
+		width:100%;
+		min-width:0;
+	}
+	.effect-select-row.efx-select-row{
+		grid-template-columns:minmax(74px, 92px) minmax(0, 1fr);
+	}
+	.level-control-row .reset-control{
+		grid-column:3;
+		grid-row:1;
+		min-width:30px;
+		min-height:28px;
+		padding:2px 6px;
+	}
+	.level-control-row.has-reset{
+		grid-template-columns:minmax(76px, 100px) minmax(0, 1fr) 30px 34px;
+	}
+	.level-control-row.has-reset .control-value{
+		grid-column:4;
+	}
+	.efx-parameter-row{
+		display:grid;
+		grid-template-columns:repeat(3, minmax(0, 1fr));
+		gap:8px;
+	}
+	.efx-parameter{
+		display:grid;
+		grid-template-columns:22px minmax(0, 1fr) 28px;
+		align-items:center;
+		gap:4px;
+		min-width:0;
+	}
+	.efx-parameter .slider{
+		width:100%;
+		min-width:0;
+		margin:0;
+	}
+	.cc-control-row{
+		display:grid;
+		grid-template-columns:minmax(76px, 100px) 44px minmax(0, 1fr) 34px;
+		align-items:center;
+		gap:6px;
+	}
+	.cc-control-row .slider{
+		width:100%;
+		min-width:0;
+		margin:0;
+	}
+	.cc-control-row label,
+	.cc-control-row input{
+		margin:0;
+	}
+	.cc-control-row input[type="text"]{
+		width:44px;
+		min-width:0;
+	}
+	@media (max-width:480px){
+		.level-control-row{
+			grid-template-columns:minmax(68px, 82px) minmax(0, 1fr) 30px;
+			column-gap:5px;
+		}
+		.level-control-row.has-reset{
+			grid-template-columns:minmax(68px, 82px) minmax(0, 1fr) 28px 30px;
+		}
+		.effect-select-row{
+			grid-template-columns:74px minmax(0, 1fr);
+		}
+		.effect-select-row > label:nth-of-type(2){
+			grid-column:1;
+		}
+		.effect-select-row > select:nth-of-type(2){
+			grid-column:2;
+		}
+		.effect-select-row.efx-select-row{
+			grid-template-columns:74px minmax(0, 1fr);
+		}
+		.efx-parameter-row{
+			gap:4px;
+		}
+		.efx-parameter{
+			grid-template-columns:18px minmax(0, 1fr) 24px;
+			gap:2px;
+		}
+	}
+	select,
+	input[type="text"]{
+		min-height:34px;
+		padding:5px 8px;
+	}
+	select{
+		appearance:none;
+		-webkit-appearance:none;
+		padding-right:32px;
+		background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23e0e0e0' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+		background-repeat:no-repeat;
+		background-position:right 12px center;
+		background-size:12px 8px;
+	}
+	#selectSound1,
+	#selectSound2{
+		width:calc(50% - 4px);
+		min-height:40px;
+		font-size:13pt;
+	}
+	button{
+		min-width:34px;
+		min-height:32px;
+		padding:5px 8px;
+	}
+	.preset-buttons{
+		gap:4px;
+		margin:2px 0;
+	}
+	.preset-buttons button{
+		height:34px;
+	}
+	.preset-save-row{
+		display:grid;
+		grid-template-columns:repeat(4, minmax(0, 1fr));
+		gap:4px;
+		margin:2px 0;
+	}
+	.preset-save-row button{
+		width:100%;
+		height:34px;
+	}
+	div{
+		margin:0;
+	}
+	label,
+	.labslide{
+		margin:1px 2px;
+	}
+	.slider{
+		height:24px;
+		margin:0 4px;
+	}
+	@media (max-width:480px){
+		.form-section{
+			padding:.5rem;
+			gap:.35rem;
+		}
 	}
 </style>
 <script>
@@ -1100,6 +1352,17 @@ function selectUserPreset(index){
 		applyUserPreset(preset);
 }
 
+function handlePresetHotkey(event){
+	if (event.ctrlKey || event.altKey || event.metaKey || event.repeat)
+		return;
+	if (event.target.closest("input, textarea, select, [contenteditable='true']"))
+		return;
+	if (/^[1-8]$/.test(event.key)){
+		event.preventDefault();
+		selectUserPreset(Number(event.key) - 1);
+	}
+}
+
 function capturePreset(){
 	return {
 		part: part,
@@ -1487,7 +1750,7 @@ function setup(){
 			<button id="presetSlot6" type="button" aria-label="Preset 7" aria-pressed="false" onclick="selectUserPreset(6);">7</button>
 			<button id="presetSlot7" type="button" aria-label="Preset 8" aria-pressed="false" onclick="selectUserPreset(7);">8</button>
 		</div>
-		<button type="button" style="width:auto;padding:0 8px;" onclick="saveUserPreset();">Save current</button>
+		<div class="preset-save-row"><button type="button" onclick="saveUserPreset();">Save current</button></div>
 	</div>
 	</fieldset>
 	<fieldset class="form-section">
@@ -1503,61 +1766,61 @@ function setup(){
 	<div>
 	<fieldset class="form-section level-effects-section">
 		<legend class="form-section-title">Levels &amp; Effects</legend>
-	<div><input type="range" min="0" max="127" value="127" class="slider" id="volumen" oninput="setvolumen(this.value);"><label class="color:var(--korg-silver);labslide;font-weight:bold">VOLUME</label><label class="labslide" id="vol">127</label></div>
-	<div>
-		<label for="selectReverb" style="color:var(--korg-silver);font-weight:bold">REVERB TYPE:</label>
+	<div class="level-control-row"><label class="labslide" for="volumen">VOLUME</label><input type="range" min="0" max="127" value="127" class="slider" id="volumen" oninput="setvolumen(this.value);"><label class="labslide control-value" id="vol">127</label></div>
+	<div class="effect-select-row">
+		<label for="selectReverb" style="color:var(--korg-silver);font-weight:bold">REVERB</label>
 		<select id="selectReverb" style="font-size:12pt;">
 			<option>Room1</option><option>Room2</option><option>Room3</option><option>Hall1</option><option selected="selected">Hall2(def)</option><option>Plate</option><option>Delay</option><option>Pan delay</option>
 		</select>				
-		<label for="selectChorus" style="color:var(--korg-silver);font-weight:bold">CHORUS TYPE:</label>
+		<label for="selectChorus" style="color:var(--korg-silver);font-weight:bold">CHORUS</label>
 		<select id="selectChorus" style="font-size:12pt;">
 			<option>Chorus1</option><option>Chorus2</option><option selected="selected">Chorus3(def)</option><option>Chorus4</option><option>Feedback Chorus</option><option>Flanger</option><option>Short delay</option><option>Short Delay FB</option>
 		</select>
 	</div>	
-	<div><input type="range" min="0" max="127" value="15" class="slider" id="reverb" oninput="setreverb(this.value);"><label class="labslide">Reverb</label><label class="labslide" id="rev">15</label></div>
-	<div><input type="range" min="0" max="127" value="0" class="slider" id="chorus" oninput="setchorus(this.value);"><label class="labslide">Chorus</label><label class="labslide" id="cho">0</label></div>
-	<div>
-		<label for="selectEFX" style="color:var(--korg-silver);font-weight:bold">EFX(*):</label>
+	<div class="level-control-row"><label class="labslide" for="reverb">Reverb</label><input type="range" min="0" max="127" value="15" class="slider" id="reverb" oninput="setreverb(this.value);"><label class="labslide control-value" id="rev">15</label></div>
+	<div class="level-control-row"><label class="labslide" for="chorus">Chorus</label><input type="range" min="0" max="127" value="0" class="slider" id="chorus" oninput="setchorus(this.value);"><label class="labslide control-value" id="cho">0</label></div>
+	<div class="effect-select-row efx-select-row">
+		<label for="selectEFX" style="color:var(--korg-silver);font-weight:bold">EFX</label>
 		<select id="selectEFX" style="font-size:12pt;">
 			<option selected="selected">None</option><option>EQ1</option><option>EQ2</option><option>Delay1</option><option>Delay2</option><option>Tremolo</option><option>Rotary</option><option>Rotary2</option><option>Overdrive</option><option>Distortion</option>
 		</select>		
 		<label for="selectEFX" style="color:var(--korg-silver);font-size:11pt;"></label>
 	</div>
-	<div>
-		<input type="range" min="0" max="127" value="0" class="slider" style="width: 18%;" id="efxparam1" oninput="setefxp1(this.value);"><label class="labslide">P1</label><label class="labslide" id="efxp1">0</label>
-		<input type="range" min="0" max="127" value="0" class="slider" style="width: 18%;" id="efxparam2" oninput="setefxp2(this.value);"><label class="labslide">P2</label><label class="labslide" id="efxp2">0</label>
-		<input type="range" min="0" max="127" value="0" class="slider" style="width: 18%;" id="efxparam3" oninput="setefxp3(this.value);"><label class="labslide">P3</label><label class="labslide" id="efxp3">0</label>
+	<div class="efx-parameter-row">
+		<div class="efx-parameter"><label class="labslide" for="efxparam1">P1</label><input type="range" min="0" max="127" value="0" class="slider" id="efxparam1" oninput="setefxp1(this.value);"><label class="labslide control-value" id="efxp1">0</label></div>
+		<div class="efx-parameter"><label class="labslide" for="efxparam2">P2</label><input type="range" min="0" max="127" value="0" class="slider" id="efxparam2" oninput="setefxp2(this.value);"><label class="labslide control-value" id="efxp2">0</label></div>
+		<div class="efx-parameter"><label class="labslide" for="efxparam3">P3</label><input type="range" min="0" max="127" value="0" class="slider" id="efxparam3" oninput="setefxp3(this.value);"><label class="labslide control-value" id="efxp3">0</label></div>
 	</div>
-	<div><input type="range" min="0" max="127" value="0" class="slider" id="efxlevel" oninput="setefxlevel(this.value);"><label class="labslide">EFX level</label><label class="labslide" id="efx">0</label></div>
-	<div>
-		<input type="range" min="0" max="127" value="64" class="slider" style="width:50%;" id="attack" oninput="setattack(this.value);">
-		<button onclick="setattack(64);">R</button>
-		<label class="labslide">Attack</label><label class="labslide" id="att">64</label>
+	<div class="level-control-row"><label class="labslide" for="efxlevel">EFX level</label><input type="range" min="0" max="127" value="0" class="slider" id="efxlevel" oninput="setefxlevel(this.value);"><label class="labslide control-value" id="efx">0</label></div>
+	<div class="level-control-row has-reset">
+		<label class="labslide" for="attack">Attack</label><input type="range" min="0" max="127" value="64" class="slider" id="attack" oninput="setattack(this.value);">
+		<button class="reset-control" onclick="setattack(64);">R</button>
+		<label class="labslide control-value" id="att">64</label>
 	</div>
-	<div>
-		<input type="range" min="0" max="127" value="64" class="slider" style="width:50%;" id="release" oninput="setrelease(this.value);">
-		<button onclick="setrelease(64);">R</button>
-		<label class="labslide">Release</label><label class="labslide" id="rel">64</label>
+	<div class="level-control-row has-reset">
+		<label class="labslide" for="release">Release</label><input type="range" min="0" max="127" value="64" class="slider" id="release" oninput="setrelease(this.value);">
+		<button class="reset-control" onclick="setrelease(64);">R</button>
+		<label class="labslide control-value" id="rel">64</label>
 	</div>
-	<div>
-		<input type="range" min="0" max="127" value="64" class="slider" style="width:50%;" id="resonance" oninput="setresonance(this.value);">
-		<button onclick="setresonance(64);">R</button>
-		<label class="labslide">Resonance</label><label class="labslide" id="res">64</label>
+	<div class="level-control-row has-reset">
+		<label class="labslide" for="resonance">Resonance</label><input type="range" min="0" max="127" value="64" class="slider" id="resonance" oninput="setresonance(this.value);">
+		<button class="reset-control" onclick="setresonance(64);">R</button>
+		<label class="labslide control-value" id="res">64</label>
 	</div>
-	<div>
-		<input type="range" min="0" max="127" value="64" class="slider" style="width:50%;" id="cutoff" oninput="setcutoff(this.value);">
-		<button onclick="setcutoff(64);">R</button>
-		<label class="labslide">Cutoff</label><label class="labslide" id="cut">64</label>
+	<div class="level-control-row has-reset">
+		<label class="labslide" for="cutoff">Cutoff</label><input type="range" min="0" max="127" value="64" class="slider" id="cutoff" oninput="setcutoff(this.value);">
+		<button class="reset-control" onclick="setcutoff(64);">R</button>
+		<label class="labslide control-value" id="cut">64</label>
 	</div>
-	<div>
-		<input type="range" min="0" max="127" value="64" class="slider" style="width:50%;" id="decay" oninput="setdecay(this.value);">
-		<button onclick="setdecay(64);">R</button>
-		<label class="labslide">Decay</label><label class="labslide" id="dec">64</label>
+	<div class="level-control-row has-reset">
+		<label class="labslide" for="decay">Decay</label><input type="range" min="0" max="127" value="64" class="slider" id="decay" oninput="setdecay(this.value);">
+		<button class="reset-control" onclick="setdecay(64);">R</button>
+		<label class="labslide control-value" id="dec">64</label>
 	</div>
-	<div>
-		<label class="labslide" for="cc">Sustain CC:</label><input type="text" id="cc" value="1">
-		<input type="range" min="0" max="127" value="0" class="slider" style="height:10px;width:60%;" id="slidecc" oninput="setslidecc(this.value);">
-		<label class="labslide" id="cclabel">0</label>
+	<div class="cc-control-row">
+		<label class="labslide" for="cc">Sustain CC</label><input type="text" id="cc" value="1">
+		<input type="range" min="0" max="127" value="0" class="slider" id="slidecc" oninput="setslidecc(this.value);">
+		<label class="labslide control-value" id="cclabel">0</label>
 	</div>
 	</fieldset>
 	</div>
@@ -1573,6 +1836,7 @@ function setup(){
 	$("#selectInterface")[0].addEventListener("change",function(event,data){selectedInterface();});
 	$("#selectSound1")[0].addEventListener("change",function(event,data){selectedSound1();});
 	$("#selectSound2")[0].addEventListener("change",function(event,data){selectedSound2();});
+	document.addEventListener("keydown", handlePresetHotkey);
 	//$("#radioset").buttonset();
 	$("#selectReverb")[0].addEventListener("change",function(event,data){setreverbtype();});
 	$("#selectChorus")[0].addEventListener("change",function(event,data){setchorustype();});
